@@ -1,0 +1,37 @@
+body {
+  font-family: "Press Start 2P", sans-serif;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.btn {
+  background-color: #ffc5d3;
+}
+.description {
+  margin-top: auto;
+}
+.timer-p {
+  font-weight: bold;
+}
+.image.btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+footer {
+  font-size: xx-small;
+}
+.footer-container {
+  margin: 20px;
+}
+.footer-p {
+  font-size: xx-small;
+}
