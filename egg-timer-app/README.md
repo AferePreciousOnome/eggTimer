@@ -8,19 +8,19 @@ Built with ❤️ by **Afere Precious Onome**. Inspired by **Nashallery on Insta
 
 ## 🔗 Live Demo
 
-[👉 View it Live](https://egg-timer-qmmz.vercel.app/)
+[ View it Live](https://egg-timer-qmmz.vercel.app/)
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ![screenshot](./public/photos/eggTimer.png)
 
 ---
 
-## ✨ Features
+##  Features
 
-- ⏱ Simple timer for different egg types:
+ - Simple timer for different egg types:
   - Soft-Boiled
   - Hard-Boiled
   - Scrambled
@@ -32,7 +32,7 @@ Built with ❤️ by **Afere Precious Onome**. Inspired by **Nashallery on Insta
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Clone the repo
 
