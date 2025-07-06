@@ -52,7 +52,6 @@ function SelectionScreen({ onSelect }) {
               height="120"
             />
             <p className={styles.recipe}>{egg.recipe}</p>{" "}
-            {/* recipe text here */}
           </button>
         ))}
       </div>

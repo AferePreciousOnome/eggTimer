@@ -54,10 +54,20 @@ function EggTimer({ eggType, onReset }) {
     <div className={styles.timerContainer}>
       <div className={styles.wrapperDiv}>
         <h1 className={styles.header}>Let`s Time Your Egg!</h1>
-        <h2>
-          {timeLeft > 0
-            ? `Your egg is ready in ${formatTime(timeLeft)}`
-            : `Your egg is done!`}
+        <h2 className={styles.eggTimerSection}>
+          {timeLeft > 0 ? (
+            <>
+              Your {eggType.eggNames} is ready in
+              <div>
+                <span className={styles.time}>{formatTime(timeLeft)}</span>
+              </div>
+            </>
+          ) : (
+            <>
+              Your {eggType.eggNames} is{" "}
+              <span className={styles.done}>done!</span>
+            </>
+          )}
         </h2>
 
         <div className={styles.button_container}>
@@ -84,8 +94,8 @@ export default EggTimer;
 
 EggTimer.propTypes = {
   eggType: PropTypes.shape({
-    eggNames: PropTypes.string.isRequired,
     time: PropTypes.number.isRequired,
+    eggNames: PropTypes.string.isRequired,
   }).isRequired,
   onReset: PropTypes.func.isRequired,
 };
