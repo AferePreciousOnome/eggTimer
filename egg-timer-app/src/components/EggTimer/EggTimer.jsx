@@ -57,7 +57,7 @@ function EggTimer({ eggType, onReset }) {
         <h2 className={styles.eggTimerSection}>
           {timeLeft > 0 ? (
             <>
-              Your {eggType.eggNames} is ready in
+              Your {eggType.eggNames} will be ready{" "}
               <div>
                 <span className={styles.time}>{formatTime(timeLeft)}</span>
               </div>
