@@ -8,6 +8,7 @@ function EggTimer({ eggType, onReset }) {
   const [timeLeft, setTimeLeft] = useState(eggType?.time || 0);
   const [isRunning, setIsRunning] = useState(false);
   const [soundPlayed, setSoundPlayed] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
 
   function formatTime(seconds) {
@@ -17,23 +18,27 @@ function EggTimer({ eggType, onReset }) {
     return `${mins} min ${secs} sec`;
   }
 
+  const handleStart = () => {
+    setHasInteracted(true);
+    setIsRunning(true);
+  };
+
   useEffect(() => {
-    if (timeLeft === 0 && !soundPlayed) {
+    if (timeLeft === 0 && !soundPlayed && handleStart) {
       audioRef.current = new Audio(stopSound);
+      audioRef.current.muted = false;
       audioRef.current.play().catch((error) => {
         console.error("Error playing this sound:", error);
       });
       setSoundPlayed(true);
     }
-  }, [timeLeft, soundPlayed]);
+  }, [timeLeft, soundPlayed, hasInteracted]);
 
   useEffect(() => {
     if (!isRunning || timeLeft === 0) return;
     const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
   }, [isRunning, timeLeft]);
-
-  const handleStart = () => setIsRunning(true);
 
   const handleStop = () => {
     setIsRunning(false);
