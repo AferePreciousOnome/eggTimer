@@ -24,13 +24,20 @@ function EggTimer({ eggType, onReset }) {
   };
 
   useEffect(() => {
-    if (timeLeft === 0 && !soundPlayed && handleStart) {
+    if (hasInteracted && !audioRef.current) {
       audioRef.current = new Audio(stopSound);
-      audioRef.current.muted = false;
-      audioRef.current.play().catch((error) => {
-        console.error("Error playing this sound:", error);
-      });
-      setSoundPlayed(true);
+    }
+  }, [hasInteracted]);
+
+  useEffect(() => {
+    if (timeLeft === 0 && !soundPlayed && hasInteracted) {
+      if (audioRef.current) {
+        audioRef.current.muted = false;
+        audioRef.current.play().catch((error) => {
+          console.error("Error playing this sound:", error);
+        });
+        setSoundPlayed(true);
+      }
     }
   }, [timeLeft, soundPlayed, hasInteracted]);
 
@@ -45,7 +52,6 @@ function EggTimer({ eggType, onReset }) {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
-      audioRef.current = null;
     }
   };
 
