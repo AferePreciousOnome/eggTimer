@@ -54,7 +54,7 @@ function EggTimer({ eggType, onReset }) {
   return (
     <div className={styles.timerContainer}>
       <div className={styles.wrapperDiv}>
-        <h1 className={styles.header}>`Let Us Time Your Egg!`</h1>
+        <h1 className={styles.header}>Let Us Time Your Egg!</h1>
         <h2 className={styles.eggTimerSection}>
           {timeLeft > 0 ? (
             <>
