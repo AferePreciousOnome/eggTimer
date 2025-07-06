@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import stopSound from "../../assets/stopSound.wav";
 import PropTypes from "prop-types";
 import styles from "./EggTimer.module.css";
+
+const stopSound = "/sound/stopSound.wav";
 
 function EggTimer({ eggType, onReset }) {
   const [timeLeft, setTimeLeft] = useState(eggType?.time || 0);
@@ -33,9 +34,9 @@ function EggTimer({ eggType, onReset }) {
   }, [isRunning, timeLeft]);
 
   const handleStart = () => setIsRunning(true);
+
   const handleStop = () => {
     setIsRunning(false);
-
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -53,11 +54,11 @@ function EggTimer({ eggType, onReset }) {
   return (
     <div className={styles.timerContainer}>
       <div className={styles.wrapperDiv}>
-        <h1 className={styles.header}>Let`s Time Your Egg!</h1>
+        <h1 className={styles.header}>`Let Us Time Your Egg!`</h1>
         <h2 className={styles.eggTimerSection}>
           {timeLeft > 0 ? (
             <>
-              Your {eggType.eggNames} will be ready{" "}
+              <div>Your {eggType.eggNames} will be ready</div>
               <div>
                 <span className={styles.time}>{formatTime(timeLeft)}</span>
               </div>
@@ -90,8 +91,6 @@ function EggTimer({ eggType, onReset }) {
   );
 }
 
-export default EggTimer;
-
 EggTimer.propTypes = {
   eggType: PropTypes.shape({
     time: PropTypes.number.isRequired,
@@ -99,3 +98,5 @@ EggTimer.propTypes = {
   }).isRequired,
   onReset: PropTypes.func.isRequired,
 };
+
+export default EggTimer;
