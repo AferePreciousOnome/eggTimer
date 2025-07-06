@@ -8,7 +8,7 @@ Built with ❤️ by **Afere Precious Onome**. Inspired by **Nashallery on Insta
 
 ## 🔗 Live Demo
 
-[ View it Live](https://egg-timer-qmmz.vercel.app/)
+[ View it Live](https://eggtimerbyprecious.vercel.app/)
 
 ---
 
