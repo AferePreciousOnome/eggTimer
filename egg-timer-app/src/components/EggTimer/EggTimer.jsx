@@ -1,13 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import stopSound from "./assets/stopSound.wav";
+import stopSound from "../../assets/stopSound.wav";
 import PropTypes from "prop-types";
-import "./styles.css";
+import styles from "./EggTimer.module.css";
 
 function EggTimer({ eggType, onReset }) {
   const [timeLeft, setTimeLeft] = useState(eggType?.time || 0);
   const [isRunning, setIsRunning] = useState(false);
   const [soundPlayed, setSoundPlayed] = useState(false);
   const audioRef = useRef(null);
+
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    if (secs === 0) return `${mins} min${mins > 1 ? "s" : ""}`;
+    return `${mins} min ${secs} sec`;
+  }
 
   useEffect(() => {
     if (timeLeft === 0 && !soundPlayed) {
@@ -24,6 +31,7 @@ function EggTimer({ eggType, onReset }) {
     const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
   }, [isRunning, timeLeft]);
+
   const handleStart = () => setIsRunning(true);
   const handleStop = () => {
     setIsRunning(false);
@@ -34,40 +42,46 @@ function EggTimer({ eggType, onReset }) {
       audioRef.current = null;
     }
   };
+
   const handleReset = () => {
     setTimeLeft(eggType?.time || 0);
     setIsRunning(false);
+    setSoundPlayed(false);
     onReset();
   };
-  return (
-    <div>
-      <p className="timer-p">Let`s Time Your Egg!</p>
-      <h2>
-        {timeLeft > 0
-          ? `Your egg is ready in ${timeLeft} sec`
-          : `Your egg is done!`}
-      </h2>
 
-      <div className="button-container">
-        <button
-          onClick={handleStart}
-          disabled={isRunning || timeLeft === 0}
-          className="btn"
-        >
-          Start
-        </button>
-        <button onClick={handleStop} disabled={!isRunning} className="btn">
-          Stop
-        </button>
-        <button onClick={handleReset} className="btn">
-          Reset
-        </button>
+  return (
+    <div className={styles.timerContainer}>
+      <div className={styles.wrapperDiv}>
+        <h1 className={styles.header}>Let`s Time Your Egg!</h1>
+        <h2>
+          {timeLeft > 0
+            ? `Your egg is ready in ${formatTime(timeLeft)}`
+            : `Your egg is done!`}
+        </h2>
+
+        <div className={styles.button_container}>
+          <button
+            onClick={handleStart}
+            disabled={isRunning || timeLeft === 0}
+            className="btn"
+          >
+            Start
+          </button>
+          <button onClick={handleStop} disabled={!isRunning} className="btn">
+            Stop
+          </button>
+          <button onClick={handleReset} className="btn">
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 export default EggTimer;
+
 EggTimer.propTypes = {
   eggType: PropTypes.shape({
     eggNames: PropTypes.string.isRequired,
