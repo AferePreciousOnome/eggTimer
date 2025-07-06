@@ -14,17 +14,17 @@ Built with ❤️ by **Afere Precious Onome**. Inspired by **Nashallery on Insta
 
 ## Screenshots
 
-![screenshot](./public/photos/eggTimer.png)
+![screenshot](./egg-timer-app/public/photos/eggTimer.png)
 
 ---
 
-##  Features
+## Features
 
- - Simple timer for different egg types:
-  - Soft-Boiled
-  - Hard-Boiled
-  - Scrambled
-  - Fried
+- Simple timer for different egg types:
+- Soft-Boiled
+- Hard-Boiled
+- Scrambled
+- Fried
 - Photo previews of each egg type
 - Recipes displayed as tooltips
 - Sound alert when timer finishes
@@ -32,7 +32,7 @@ Built with ❤️ by **Afere Precious Onome**. Inspired by **Nashallery on Insta
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### 1. Clone the repo
 
